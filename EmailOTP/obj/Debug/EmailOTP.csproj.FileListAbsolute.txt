@@ -5,3 +5,10 @@ C:\Users\ianha\Documents\Capgemini\EmailOTP\EmailOTP\bin\Debug\EmailOTP.exe
 C:\Users\ianha\Documents\Capgemini\EmailOTP\EmailOTP\bin\Debug\EmailOTP.pdb
 C:\Users\ianha\Documents\Capgemini\EmailOTP\EmailOTP\obj\Debug\EmailOTP.exe
 C:\Users\ianha\Documents\Capgemini\EmailOTP\EmailOTP\obj\Debug\EmailOTP.pdb
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\bin\Debug\EmailOTP.exe.config
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\bin\Debug\EmailOTP.exe
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\bin\Debug\EmailOTP.pdb
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\obj\Debug\EmailOTP.csproj.AssemblyReference.cache
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\obj\Debug\EmailOTP.csproj.CoreCompileInputs.cache
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\obj\Debug\EmailOTP.exe
+C:\Users\ianha\Documents\GitHub\Email-OTP\EmailOTP\obj\Debug\EmailOTP.pdb

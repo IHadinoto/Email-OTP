@@ -8,7 +8,15 @@ using System.Threading.Tasks;
 
 public class Email_OTP_Module
 {
+    public const int STATUS_EMAIL_OK = 0;
+    public const int STATUS_EMAIL_FAIL = 1;
+    public const int STATUS_EMAIL_INVALID = 2;
+    public const int STATUS_OTP_OK = 3;
+    public const int STATUS_OTP_FAIL = 4;
+    public const int STATUS_OTP_TIMEOUT = 5;
+
     private static readonly string DOMAIN = "@dso.org.sg";
+    // private static readonly string DOMAIN = "@gmail.com";
     private const int OTP_LENGTH = 6;
     private const int OTP_VALIDITY_DURATION = 60000; // 1 minute in milliseconds
     private const int MAX_OTP_ATTEMPTS = 10;
@@ -29,6 +37,7 @@ public class Email_OTP_Module
 
     public string GenerateOTP()
     {
+        Console.WriteLine("Generating OTP...");
         Random random = new Random();
         string otp = random.Next(0, 999999).ToString("D6");
         return otp;
@@ -36,6 +45,7 @@ public class Email_OTP_Module
 
     public bool ValidateEmailDomain(string email)
     {
+        Console.WriteLine("Validating email domain...");
         return email.EndsWith(DOMAIN, StringComparison.OrdinalIgnoreCase);
     }
 
@@ -43,12 +53,13 @@ public class Email_OTP_Module
     {
         try
         {
-            // Assuming send_email is defined elsewhere
+            Console.WriteLine("Attempting to send email...");
             send_email(emailAddress, emailBody);
             return true;
         }
         catch (Exception)
         {
+            Console.WriteLine("Exception on sending email...");
             return false;
         }
     }
@@ -69,14 +80,17 @@ public class Email_OTP_Module
         otpGeneratedTime = DateTime.Now;
         otpAttempts = 0;
 
+        // Console.WriteLine($"OTP = {currentOTP}");
         string emailBody = $"Your OTP Code is {currentOTP}. The code is valid for 1 minute";
 
         if (SendEmail(user_email, emailBody))
         {
+            Console.WriteLine("STATUS_EMAIL_OK...");
             return STATUS_EMAIL_OK;
         }
         else
         {
+            Console.WriteLine("STATUS_EMAIL_FAIL...");
             return STATUS_EMAIL_FAIL;
         }
     }
@@ -120,24 +134,21 @@ public class Email_OTP_Module
     private void send_email(string emailAddress, string emailBody)
     {
         // Implementation for sending email
-        // Assuming this function is defined elsewhere or can use System.Net.Mail
+        // Or can use System.Net.Mail
+        Console.WriteLine("Using SmtpClient...");
         using (var client = new SmtpClient("smtp.yourserver.com"))
+        // using (var client = new SmtpClient("smtp.gmail.com", 465))
         {
+            Console.WriteLine("Generating MailMessage...");
             var mail = new MailMessage("your-email@dso.org.sg", emailAddress)
             {
                 Subject = "Your OTP Code",
                 Body = emailBody
             };
+            Console.WriteLine("Sending mail...");
             client.Send(mail);
         }
     }
-
-    public const int STATUS_EMAIL_OK = 0;
-    public const int STATUS_EMAIL_FAIL = 1;
-    public const int STATUS_EMAIL_INVALID = 2;
-    public const int STATUS_OTP_OK = 3;
-    public const int STATUS_OTP_FAIL = 4;
-    public const int STATUS_OTP_TIMEOUT = 5;
 }
 
 namespace OTPModuleApp
